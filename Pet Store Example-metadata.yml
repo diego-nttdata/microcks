@@ -1,0 +1,24 @@
+apiVersion: mocks.microcks.io/v1alpha1
+kind: APIMetadata
+metadata:
+  name: Pet Store Example
+  version: 1.0.0
+  labels:
+    domain: pets
+    status: stable
+    team: Pets Team
+operations:
+  'POST /pets':
+    dispatcher: JSON_BODY
+    dispatcherRules: |-
+      {
+        "exp": "/name",
+        "operator": "equals",
+        "cases": {
+          "Juan": "Juan",
+          "José": "José",
+          "Tigresse": "tigresse",
+          
+          "default": "tigresse"
+        }
+      }
